@@ -35,7 +35,7 @@ def to_period(x):
     
 def is_close(a, b, rel_tol=1e-09, abs_tol=0.0):
     return abs(a-b) <= max(rel_tol * max(abs(a), abs(b)), abs_tol)
-
+"""
 south_korea = ql.SouthKorea()
 today = to_date(date.today())
 
@@ -43,7 +43,7 @@ eval_date = ql.Settings.instance().evaluationDate
 
 null_curve = ql.ZeroCurve([today, today + ql.Period(1, ql.Days)], [0.0, 0.0], ql.ActualActual(), south_korea)
 null_curve.enableExtrapolation()
-
+"""
 def get_excel_volatility(file_name):
     """
     get_excel_volatility(file_name)

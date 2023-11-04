@@ -5,12 +5,14 @@ from datetime import date, timedelta
 import numpy as np
 import matplotlib.pyplot as plt
 from functools import partial
-import vol_utils
+#import vol_utils
+from vol_utils import str2date
 
 calc_date = date(2014, 1, 2)
 s = ["02/01/2014", "03/03/2014", "04/02/2014", "07/01/2014", "12/28/2014", "06/26/2015", "12/23/2015"]
 
-dates = list(map(vol_utils.str_to_date, s))
+#dates = list(map(vol_utils.str_to_date, s))
+dates = list(map(str2date, s))
 
 strikes = [0.80, 0.85, 0.90, 0.95, 0.975, 1.0, 1.025, 1.05, 1.10, 1.15, 1.20]
 vol=[[37.079, 31.291, 25.594, 20.273, 18.307, 17.313, 17.153, 16.86, 17.334, 20.602, 22.576],
@@ -28,5 +30,5 @@ surface = fitting.SurfaceFit(calc_date, dates, mult_strikes, vol, fitter,
                              weight_cut = 0.7,
                              calendar_buffer = 0.001)
 
-surface.calibrate(maxiter = 20000, verbose = False)
+surface.calibrate(maxiter = 50000, verbose = True)
 surface.visualize()
